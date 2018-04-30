@@ -1,0 +1,28 @@
+{
+  "host": "localhost",
+  "port": "8086",
+  "username": "root",
+  "password": "root",
+  "databases": [
+    "telegraf"
+  ],
+  "policies": [
+    {
+      "pattern": {
+        "database": ".*",
+        "measurement": "smart_.*",
+        "field": ".*"
+      },
+      "retentions": "*:31d,15m:3y,30m:*",
+      "function": "MAX({})"
+    },
+    {
+      "pattern": {
+        "database": ".*",
+        "measurement": ".*",
+        "field": ".*"
+      },
+      "retentions": "*:3d,1m:14d,5m:31d,15m:3y,30m:*"
+    }
+  ]
+}
